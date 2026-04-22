@@ -54,6 +54,12 @@ Tradeoff: Deeper trees (5 options/question) vs shorter paths. Chose shorter—co
 - More nuanced signals (internal-but-defensive vs internal-confident)  
 - Visual progress bar (you're 60% through Axis 2)
 
+## 7. Part B: Execution (Agent)
+
+A simple CLI-based agent was implemented to execute the decision tree. It reads the TSV structure, traverses nodes deterministically based on user input, and generates reflections and a summary.
+
+This demonstrates how the static decision tree can be translated into an interactive system without relying on LLMs.
+
 ## Conclusion  
 This was harder than I expected—turning fuzzy psych into click-paths that actually shift thinking. The constraint of *no LLM at runtime* forced better questions. 
 

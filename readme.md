@@ -1,63 +1,89 @@
-# Daily Reflection Tree  
-**A no-AI evening reflection tool that actually gets you thinking about your day**
+# Daily Reflection Tree
 
-## What This Does  
-At 7pm when you're fried but know you should reflect, this walks you through structured questions that reveal:  
-- Did you own your choices today? *(agency)*  
-- Did you give more than you took? *(contribution)*  
-- Was your head just about "me" or "us"? *(perspective)*  
+**A simple, no-AI reflection tool that helps you actually think through your day**
 
-**No AI, no randomness, no typing essays**—just pick options, get real insights.
+## What This Does
 
-## Folder Structure  
-```
-├── tree/                 
-│   ├── reflection-tree.tsv     # The actual tree (load this!)
-│   └── tree-diagram.png       # Visual map of all paths
-├── agent/                    # Bonus: runnable Python version
-│   └── reflection_tree.py
-├── transcripts/              # Sample conversations
-│   ├── victim-path.md
-│   └── victor-path.md
-├── write-up.md              # Why these questions work
-└── README.md                ← you are here
-```
+At the end of a long day—when you're tired but know you should reflect—this walks you through a set of structured questions to help you notice patterns in how you think and act:
 
-## Quick Demo (if you have Python)  
-```bash
-cd agent/
-python3 reflection_tree.py
-```
-Follow the prompts. Try "Tough" day → different path than "Productive".
+* Did you take ownership of your actions? *(agency)*
+* Did you contribute or mostly expect? *(contribution)*
+* Were you focused only on yourself or also on others? *(perspective)*
 
-## How the Tree Works  
-1. **Questions** have 3-4 fixed options  
-2. **Decision nodes** route you: `Tough|Frustrating → agency probe`  
-3. **Signals** tally: `axis1:internal +1`  
-4. **Reflections** show your patterns: *"You spotted your choices even on tough days"*  
-5. **Summary** reveals your dominant mindset  
-
-**Example flow**: START → *"How was today?"* → *"Tough"* → *"What was your instinct?"* → *"Waited for help"* → *"Fair—tough days pull focus outward. But you made choices..."*
-
-## Tree Format (TSV Columns)  
-| id | parentId | type | text | options | target | signal |  
-|----|----------|------|------|---------|--------|--------|  
-| A1 | START | question | "How was today?" | Tough<em>Productive</em>... | | |  
-| D1 | A1 | **decision** | (hidden) | answer=Tough:A1_LOW... | | |  
-
-## ✅ Evaluation Criteria Match  
-- **25+ nodes** - 3 axes × (questions + decisions + reflections)  
-- **Psych grounded** - Rotter, Dweck, Maslow → real questions  
-- **Deterministic** - Same answers = same path always  
-- **No moralizing** - Guides, doesn't judge  
-- **Progressive** - Axis 1 insight → Axis 2 question  
-
-## Try These Personas  
-**"Victim Rob"**: Pick external/blame options → gets gentle agency nudge  
-**"Victor Priya"**: Internal/contribution → gets transcendence prompts  
-
-## Built For  
-DeepThought Fellowship assignment. Shows I can turn psych research into structured products, not just chatbots.
+**No AI, no randomness, no long typing**—just choose options and get clear, consistent insights.
 
 ---
 
+## Folder Structure
+
+```
+├── tree/                 
+│   ├── reflection-tree.tsv     # Main decision tree
+│   └── tree-diagram.png        # Visual flow of the tree
+├── agent/                    
+│   └── reflection_tree.py      # Runnable CLI version
+├── transcripts/              
+│   ├── victim-path.md
+│   └── victor-path.md
+├── write-up.md                # Design explanation
+└── README.md                  
+```
+
+---
+
+## Quick Demo (Python)
+
+From the root folder:
+
+```bash
+python agent/reflection_tree.py
+```
+
+Follow the prompts.
+Try answering differently (e.g., “Tough” vs “Productive”) to see how the path changes.
+
+---
+
+## How the Tree Works
+
+1. You answer questions with fixed options
+2. Your answers determine the path (no randomness)
+3. Signals track patterns across three axes
+4. Reflections highlight what your responses suggest
+5. A summary shows your overall tendency
+
+**Example flow**:
+START → “How was today?” → “Tough” → “What was your instinct?” → “Waited for help” → reflection → next axis
+
+---
+
+## Tree Format (TSV Columns)
+
+| id | parentId | type     | text             | options                 | target | signal |
+| -- | -------- | -------- | ---------------- | ----------------------- | ------ | ------ |
+| A1 | START    | question | "How was today?" | Tough | Productive ...  |        |        |
+| D1 | A1       | decision | (hidden)         | answer=Tough:A1_LOW ... |        |        |
+
+---
+
+## Why This Works
+
+* **Deterministic** – same answers always lead to the same outcome
+* **Grounded in psychology** – based on ideas like locus of control and perspective-taking
+* **Practical** – designed for real end-of-day reflection, not theory
+* **Non-judgmental** – it nudges, not lectures
+
+---
+
+## Try These Personas
+
+* **“Victim Rob”** → chooses external/blame options → gets gentle prompts toward ownership
+* **“Victor Priya”** → chooses internal/contribution options → gets deeper reflection
+
+---
+
+## Built For
+
+Created as part of the DeepThought Fellowship assignment to demonstrate how psychological concepts can be translated into structured, deterministic systems—not just AI-driven conversations.
+
+---

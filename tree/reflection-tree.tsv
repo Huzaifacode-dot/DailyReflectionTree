@@ -13,8 +13,13 @@ BRIDGE_1_2B	A1_R_EXT	bridge	Let’s now look at how you showed up for others.		A
 
 A2_Q1	BRIDGE_1_2	question	Think about one interaction today—what did it feel like from your side?	I stepped in to help, even if I didn’t have to|I felt like I deserved more credit or support|I shared something useful without being asked|I felt like others weren’t pulling their weight		
 A2_D1	A2_Q1	decision		answer=I stepped in to help, even if I didn’t have to|I shared something useful without being asked:A2_Q2_CONTRIB;answer=I felt like I deserved more credit or support|I felt like others weren’t pulling their weight:A2_Q2_ENT		
-A2_Q2_CONTRIB	A2_D1	question	At the end of the day, what stands out more to you?	Where I went a bit beyond what was expected|The support or value I gave to others|Moments I contributed extra|Helping without being asked		axis2:contribution
-A2_Q2_ENT	A2_D1	question	At the end of the day, what stands out more to you?	Where I didn’t get the recognition I deserved|The frustration of things not being fair|Expectations not being met|Others not contributing equally		axis2:entitlement
+
+A2_Q_EXTRA	A2_D1	question	During the day, what motivated your actions most?	Wanting to help others|Doing what was expected|Seeking recognition|Avoiding criticism		
+A2_D2	A2_Q_EXTRA	decision		answer=Wanting to help others:A2_Q2_CONTRIB;answer=Doing what was expected|Seeking recognition|Avoiding criticism:A2_Q2_ENT		
+
+A2_Q2_CONTRIB	A2_D2	question	At the end of the day, what stands out more to you?	Where I went a bit beyond what was expected|The support or value I gave to others|Moments I contributed extra|Helping without being asked		axis2:contribution
+A2_Q2_ENT	A2_D2	question	At the end of the day, what stands out more to you?	Where I didn’t get the recognition I deserved|The frustration of things not being fair|Expectations not being met|Others not contributing equally		axis2:entitlement
+
 A2_R_CONTRIB	A2_Q2_CONTRIB	reflection	You focused on contributing today. That mindset builds trust and long-term impact.			
 A2_R_ENT	A2_Q2_ENT	reflection	It seems like fairness and recognition stood out to you. Shifting focus to what you can contribute may change that experience.			
 BRIDGE_2_3	A2_R_CONTRIB	bridge	Now let’s zoom out beyond yourself.		A3_Q1	
@@ -28,4 +33,5 @@ A3_R_SELF	A3_Q2_SELF	reflection	Your focus stayed close to your own role today. 
 A3_R_OTHER	A3_Q2_OTHER	reflection	You considered others and the bigger picture. That perspective often brings more meaning and alignment.			
 
 SUMMARY	A3_R_SELF	summary	Today you leaned {axis1.dominant} in control, {axis2.dominant} in contribution, and {axis3.dominant} in perspective.			
+SUMMARY	A3_R_OTHER	summary	Today you leaned {axis1.dominant} in control, {axis2.dominant} in contribution, and {axis3.dominant} in perspective.			
 END	SUMMARY	end	That’s it for today. See you tomorrow.			
