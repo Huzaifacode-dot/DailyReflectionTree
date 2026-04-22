@@ -1,0 +1,31 @@
+id	parentId	type	text	options	target	signal
+START	null	start	Good evening. Let’s reflect on your day.			
+A1_Q1	START	question	When something didn’t go your way today, what felt most true?	I could’ve handled it better|It was mostly bad timing or external stuff|I adjusted and found another way|Someone else’s decisions got in the way		
+A1_D1	A1_Q1	decision		answer=I could’ve handled it better|I adjusted and found another way:A1_Q2_INT;answer=It was mostly bad timing or external stuff|Someone else’s decisions got in the way:A1_Q2_EXT		
+A1_Q2_INT	A1_D1	question	When a task didn’t go as expected, what was your first thought?	What can I do differently next time?|I’ll take responsibility and fix it|I’ll try another approach|I’ll keep pushing forward		axis1:internal
+A1_Q2_EXT	A1_D1	question	When a task didn’t go as expected, what was your first thought?	This was just unlucky timing|This setup/team made it hard to succeed|Things were out of my control|I’ll wait and see what happens		axis1:external
+A1_Q3	A1_Q2_INT	question	Looking back at today, what made the biggest difference in how things turned out?	The effort I put in|The way I approached the problem|Support or luck played a big role|Things outside my control		axis1:internal
+A1_Q3B	A1_Q2_EXT	question	Looking back at today, what made the biggest difference in how things turned out?	The effort I put in|The way I approached the problem|Support or luck played a big role|Things outside my control		axis1:external
+A1_R_INT	A1_Q3	reflection	You took ownership in how you handled things today. That sense of control helps you grow even when outcomes vary.			
+A1_R_EXT	A1_Q3B	reflection	It felt like a lot was outside your control today. Still, noticing small choices you made can shift how tomorrow unfolds.			
+BRIDGE_1_2	A1_R_INT	bridge	Let’s now look at how you showed up for others.		A2_Q1	
+BRIDGE_1_2B	A1_R_EXT	bridge	Let’s now look at how you showed up for others.		A2_Q1	
+
+A2_Q1	BRIDGE_1_2	question	Think about one interaction today—what did it feel like from your side?	I stepped in to help, even if I didn’t have to|I felt like I deserved more credit or support|I shared something useful without being asked|I felt like others weren’t pulling their weight		
+A2_D1	A2_Q1	decision		answer=I stepped in to help, even if I didn’t have to|I shared something useful without being asked:A2_Q2_CONTRIB;answer=I felt like I deserved more credit or support|I felt like others weren’t pulling their weight:A2_Q2_ENT		
+A2_Q2_CONTRIB	A2_D1	question	At the end of the day, what stands out more to you?	Where I went a bit beyond what was expected|The support or value I gave to others|Moments I contributed extra|Helping without being asked		axis2:contribution
+A2_Q2_ENT	A2_D1	question	At the end of the day, what stands out more to you?	Where I didn’t get the recognition I deserved|The frustration of things not being fair|Expectations not being met|Others not contributing equally		axis2:entitlement
+A2_R_CONTRIB	A2_Q2_CONTRIB	reflection	You focused on contributing today. That mindset builds trust and long-term impact.			
+A2_R_ENT	A2_Q2_ENT	reflection	It seems like fairness and recognition stood out to you. Shifting focus to what you can contribute may change that experience.			
+BRIDGE_2_3	A2_R_CONTRIB	bridge	Now let’s zoom out beyond yourself.		A3_Q1	
+BRIDGE_2_3B	A2_R_ENT	bridge	Now let’s zoom out beyond yourself.		A3_Q1	
+
+A3_Q1	BRIDGE_2_3	question	When you think about today’s biggest moment, who does it feel like it was about?	Mostly me and my own work|The team and how we were doing|Someone specific who was affected|The customer or end result		
+A3_D1	A3_Q1	decision		answer=Mostly me and my own work:A3_Q2_SELF;answer=The team and how we were doing|Someone specific who was affected|The customer or end result:A3_Q2_OTHER		
+A3_Q2_SELF	A3_D1	question	In a tough moment today, what was your main focus?	How it was affecting me personally|My own workload|My stress and deadlines|My results		axis3:self
+A3_Q2_OTHER	A3_D1	question	In a tough moment today, what was your main focus?	How it was impacting the team|What someone else might be going through|What needed to improve overall|The bigger outcome		axis3:other
+A3_R_SELF	A3_Q2_SELF	reflection	Your focus stayed close to your own role today. Expanding perspective can often reduce pressure.			
+A3_R_OTHER	A3_Q2_OTHER	reflection	You considered others and the bigger picture. That perspective often brings more meaning and alignment.			
+
+SUMMARY	A3_R_SELF	summary	Today you leaned {axis1.dominant} in control, {axis2.dominant} in contribution, and {axis3.dominant} in perspective.			
+END	SUMMARY	end	That’s it for today. See you tomorrow.			
